@@ -1,0 +1,11 @@
+#!/bin/bash
+# bash-utils: paste
+# Reads stdin, uploads the data to a pastebin service and writes the resulting URL to stdout
+# (NB: currently uses http://sprunge.us to paste data)
+
+if hash curl 2> /dev/null; then
+	curl -s -F 'sprunge=<-' http://sprunge.us
+else
+        echo "bash-utils error: curl must be available for this script to run." >&2
+        echo "On Debian or Ubuntu, run the following: sudo apt-get install curl" >&2
+fi

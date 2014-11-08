@@ -1,0 +1,10 @@
+#!/bin/bash
+# bash-utils: clipboard-set
+# Sets the data on the clipboard from stdin, while printing the data also
+
+if hash xclip 2> /dev/null; then
+	tee >(xclip -selection clipboard)
+else
+        echo "bash-utils error: xclip must be available for this script to run." >&2
+        echo "On Debian or Ubuntu, run the following: sudo apt-get install xclip" >&2
+fi
